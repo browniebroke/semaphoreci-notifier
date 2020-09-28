@@ -42,3 +42,7 @@ Thanks to the included [GitHub Action Workflows](.github/workflows), if you set 
 ## License
 
 [![CC0](https://mirrors.creativecommons.org/presskit/buttons/88x31/svg/cc-zero.svg)](https://creativecommons.org/publicdomain/zero/1.0/)
+
+[link-webext-polyfill]: https://github.com/mozilla/webextension-polyfill
+[link-cws-keys]: https://github.com/DrewML/chrome-webstore-upload/blob/master/How%20to%20generate%20Google%20API%20keys.md
+[link-amo-keys]: https://addons.mozilla.org/en-US/developers/addon/api/key
