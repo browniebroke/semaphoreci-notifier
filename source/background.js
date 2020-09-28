@@ -1,2 +1,8 @@
-// eslint-disable-next-line import/no-unassigned-import
-import './options-storage';
+browser.runtime.onMessage.addListener((message) => {
+  if (message.type === 'semaphoreci-notifier') {
+    return browser.notifications.create({
+      type: 'basic',
+      ...message.options,
+    });
+  }
+});
