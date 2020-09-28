@@ -17,8 +17,8 @@ jobs:
       - uses: actions/checkout@v2
         with:
           fetch-depth: 20
-      - run: npm install
-      - run: npm test # This includes the build
+      - run: yarn install
+      - run: yarn test # This includes the build
       - uses: fregante/daily-version-action@v1
         name: Create tag if necessary
         id: daily-version
@@ -32,7 +32,7 @@ jobs:
           VER: ${{ steps.daily-version.outputs.version }}
         run: |
           echo https://github.com/$GITHUB_REPOSITORY/tree/$VER > distribution/SOURCE_URL.txt
-          npm run version
+          yarn run version
       - uses: actions/upload-artifact@v2
         with:
           path: distribution

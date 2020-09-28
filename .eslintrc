@@ -1,0 +1,24 @@
+{
+  "extends": ["prettier"],
+  "plugins": ["prettier"],
+  "parserOptions": {
+    "ecmaVersion": 9,
+    "sourceType": "module"
+  },
+
+  "env": {
+    "es6": true
+  },
+  "ignorePatterns": ["node_modules/", "dist/"],
+  "rules": {
+    "prettier/prettier": [
+      "error",
+      {
+        "trailingComma": "es5",
+        "singleQuote": true,
+        "semi": true,
+        "arrowParens": "always"
+      }
+    ]
+  }
+}
