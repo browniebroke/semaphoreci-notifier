@@ -1,10 +1,17 @@
 {
   "name": "Semaphore CI Notifier",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "A browser extension to notify of build outcome in Semaphore CI classic",
+  "default_locale": "en",
   "homepage_url": "https://github.com/browniebroke/semaphoreci-notifier",
   "manifest_version": 2,
   "minimum_chrome_version": "74",
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "{eeb8fd87-443b-47ce-b2d9-c0b980a704e2}",
+      "strict_min_version": "48.0"
+    }
+  },
   "icons": {
     "128": "icon.png"
   },
