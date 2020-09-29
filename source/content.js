@@ -2,34 +2,28 @@
 const PASSED_STRING = '[passed]';
 const FAILED_STRING = '[failed]';
 
-function handleTitleChanged(mutation) {
-  const oldValue = mutation.oldValue;
-  if (oldValue.includes(PASSED_STRING) || oldValue.includes(FAILED_STRING)) {
-    console.log('Build was already finished...');
-    return;
-  }
-  const newValue = mutation.target.nodeValue;
-  console.log(newValue);
-  if (newValue.includes(PASSED_STRING)) {
+function handleTitleChanged(titleText) {
+  console.log(titleText);
+  if (titleText.includes(PASSED_STRING)) {
     console.log('Build OK!');
     browser.runtime.sendMessage({
       type: 'semaphoreci-notifier',
       options: {
         iconUrl: browser.extension.getURL('passed.png'),
         title: 'Build OK!',
-        message: newValue,
+        message: titleText,
       },
     });
     return;
   }
-  if (newValue.includes(FAILED_STRING)) {
+  if (titleText.includes(FAILED_STRING)) {
     console.log('Build Failed!');
     browser.runtime.sendMessage({
       type: 'semaphoreci-notifier',
       options: {
         iconUrl: browser.extension.getURL('failed.png'),
         title: 'Build Failed!',
-        message: newValue,
+        message: titleText,
       },
     });
     return;
@@ -40,7 +34,15 @@ function handleTitleChanged(mutation) {
 const observer = new MutationObserver((mutations) => {
   console.log(mutations);
   mutations.forEach((mutation) => {
-    handleTitleChanged(mutation);
+    // The <title> is not updated in place, it's removed and then added
+    // When the node is added back to the dom, check its content
+    if (
+      mutation.addedNodes.length > 0 &&
+      mutation.target &&
+      mutation.target.innerText
+    ) {
+      handleTitleChanged(mutation.target.innerText);
+    }
   });
 });
 
