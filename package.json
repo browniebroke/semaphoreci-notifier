@@ -24,24 +24,23 @@
     ]
   },
   "dependencies": {
-    "webext-options-sync": "0.21.2",
-    "webextension-polyfill": "0.4.0"
+    "webext-options-sync": "2.0.0",
+    "webextension-polyfill": "0.6.0"
   },
   "devDependencies": {
     "chrome-webstore-upload-cli": "1.2.0",
-    "copy-webpack-plugin": "5.1.2",
-    "daily-version": "0.12.0",
+    "copy-webpack-plugin": "6.1.1",
+    "daily-version": "2.0.0",
     "dot-json": "1.2.1",
     "eslint": "7.10.0",
     "eslint-config-prettier": "6.11.0",
-    "eslint-config-xo": "0.26.0",
     "eslint-plugin-prettier": "3.1.4",
     "npm-run-all": "4.1.5",
     "prettier": "2.1.2",
-    "size-plugin": "1.2.0",
-    "terser-webpack-plugin": "1.4.5",
-    "web-ext": "4.3.0",
-    "web-ext-submit": "4.3.0",
+    "size-plugin": "2.0.1",
+    "terser-webpack-plugin": "4.2.2",
+    "web-ext": "5.1.0",
+    "web-ext-submit": "5.1.0",
     "webpack": "4.44.2",
     "webpack-cli": "3.3.12"
   }
