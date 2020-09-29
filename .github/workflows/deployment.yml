@@ -17,6 +17,12 @@ jobs:
       - uses: actions/checkout@v2
         with:
           fetch-depth: 20
+      # Read node version from `.nvmrc` file
+      - id: nvmrc
+        uses: browniebroke/read-nvmrc-action@v1
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '${{ steps.nvmrc.outputs.node_version }}'
       - run: yarn install
       - run: yarn test # This includes the build
       - uses: fregante/daily-version-action@v1
