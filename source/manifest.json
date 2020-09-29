@@ -7,7 +7,7 @@
   "minimum_chrome_version": "74",
   "browser_specific_settings": {
     "gecko": {
-      "id": "browniebroke+semaphorecinotifier@gmail.com",
+      "id": "{b41f8e76-5c6d-444a-910d-a5a69e095e5d}",
       "strict_min_version": "48.0"
     }
   },
