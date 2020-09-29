@@ -8,7 +8,7 @@
   "icons": {
     "128": "icon.png"
   },
-  "permissions": ["activeTab", "notifications", "tabs"],
+  "permissions": ["notifications"],
   "background": {
     "persistent": false,
     "scripts": ["browser-polyfill.min.js", "background.js"]
