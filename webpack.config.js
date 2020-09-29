@@ -16,16 +16,20 @@ module.exports = {
   },
   plugins: [
     new SizePlugin(),
-    new CopyWebpackPlugin([
-      {
-        from: '**/*',
-        context: 'source',
-        ignore: ['*.js'],
-      },
-      {
-        from: 'node_modules/webextension-polyfill/dist/browser-polyfill.min.js',
-      },
-    ]),
+    new CopyWebpackPlugin({
+      patterns: [
+        {
+          from: 'source',
+          globOptions: {
+            ignore: ['*.js'],
+          },
+        },
+        {
+          from:
+            'node_modules/webextension-polyfill/dist/browser-polyfill.min.js',
+        },
+      ],
+    }),
   ],
   optimization: {
     minimizer: [
