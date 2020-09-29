@@ -12,17 +12,6 @@
     "version": "dot-json distribution/manifest.json version $VER",
     "watch": "webpack --mode=development --watch"
   },
-  "xo": {
-    "envs": [
-      "browser"
-    ],
-    "globals": [
-      "browser"
-    ],
-    "ignores": [
-      "distribution"
-    ]
-  },
   "dependencies": {
     "webext-options-sync": "2.0.0",
     "webextension-polyfill": "0.6.0"
