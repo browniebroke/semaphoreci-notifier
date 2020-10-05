@@ -28,7 +28,7 @@
     "prettier": "2.1.2",
     "size-plugin": "2.0.1",
     "terser-webpack-plugin": "4.2.2",
-    "web-ext": "5.1.0",
+    "web-ext": "5.2.0",
     "web-ext-submit": "5.1.0",
     "webpack": "4.44.2",
     "webpack-cli": "3.3.12"
