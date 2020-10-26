@@ -3,6 +3,7 @@
 Browser extension to send browser notifications when the build finishes.
 
 - [Chrome webstore](https://chrome.google.com/webstore/detail/semaphore-ci-notifier/fidjidielhnphocjcnbccipbjikemnpl)
+- [Firefox Addon](https://addons.mozilla.org/firefox/addon/semaphore-ci-notifier/)
 
 ![Logo](media/semaphore-ci-small-tile.png)
 
