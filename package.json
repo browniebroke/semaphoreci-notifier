@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "webext-options-sync": "2.0.1",
-    "webextension-polyfill": "0.7.0"
+    "webextension-polyfill": "0.8.0"
   },
   "devDependencies": {
     "chrome-webstore-upload-cli": "1.2.1",
