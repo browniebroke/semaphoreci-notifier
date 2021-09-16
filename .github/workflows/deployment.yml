@@ -23,8 +23,8 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: '${{ steps.nvmrc.outputs.node_version }}'
-      - run: yarn install
-      - run: yarn test # This includes the build
+      - run: npm install
+      - run: npm run test # This includes the build
       - uses: fregante/daily-version-action@v1
         name: Create tag if necessary
         id: daily-version
@@ -38,7 +38,7 @@ jobs:
           VER: ${{ steps.daily-version.outputs.version }}
         run: |
           echo https://github.com/$GITHUB_REPOSITORY/tree/$VER > distribution/SOURCE_URL.txt
-          yarn run version
+          npm run version
       - uses: actions/upload-artifact@v2
         with:
           path: distribution

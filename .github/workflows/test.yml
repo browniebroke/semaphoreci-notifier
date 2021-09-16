@@ -18,5 +18,5 @@ jobs:
         with:
           node-version: '${{ steps.nvmrc.outputs.node_version }}'
 
-      - run: yarn
-      - run: yarn test
+      - run: npm i
+      - run: npm run test
