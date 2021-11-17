@@ -56,3 +56,8 @@ observer.observe(document.querySelector('head > title'), {
 });
 
 console.log('SemaphoreCI Notifier active!');
+
+addEventListener('beforeunload', (event) => {
+  observer.disconnect();
+  console.log('Deactivated SemaphoreCI Notifier');
+});
