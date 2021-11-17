@@ -15,7 +15,7 @@ module.exports = {
     filename: '[name].js',
   },
   plugins: [
-    new SizePlugin(),
+    new SizePlugin({}),
     new CopyWebpackPlugin({
       patterns: [
         {
