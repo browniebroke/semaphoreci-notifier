@@ -14,7 +14,7 @@
   "icons": {
     "128": "icon.png"
   },
-  "permissions": ["notifications"],
+  "permissions": ["notifications", "tabs"],
   "background": {
     "persistent": false,
     "scripts": ["browser-polyfill.min.js", "background.js"]
