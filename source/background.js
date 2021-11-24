@@ -14,8 +14,11 @@ browser.runtime.onMessage.addListener((message, sender, sendResponse) => {
           notificationId,
           senderTab.id
         );
-        browser.tabs.update(senderTab.id, { active: true });
-        browser.notifications.clear(notificationId);
+        const updating = browser.tabs.update(senderTab.id, { active: true });
+        updating.then(() => {
+          console.log('Tab updated, clearing notification');
+          browser.notifications.clear(notificationId);
+        });
       });
     });
   }
