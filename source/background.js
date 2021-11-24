@@ -15,6 +15,7 @@ browser.runtime.onMessage.addListener((message, sender, sendResponse) => {
           senderTab.id
         );
         browser.tabs.update(senderTab.id, { active: true });
+        browser.notifications.clear(notificationId);
       });
     });
   }
