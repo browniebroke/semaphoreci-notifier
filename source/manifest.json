@@ -21,10 +21,8 @@
   },
   "content_scripts": [
     {
-      "matches": [
-        "https://semaphoreci.com/*/builds/*",
-        "https://semaphoreci.com/*/deploys/*"
-      ],
+      "matches": ["https://semaphoreci.com/*"],
+      "include_globs": ["*/builds/*", "*/deploys/*"],
       "js": ["browser-polyfill.min.js", "content.js"]
     }
   ]
