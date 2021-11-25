@@ -46,16 +46,17 @@ const observer = new MutationObserver((mutations) => {
   });
 });
 
-observer.observe(document.querySelector('head > title'), {
-  attributes: true,
-  childList: true,
-  characterData: true,
-  subtree: true,
-  attributeOldValue: true,
-  characterDataOldValue: true,
+addEventListener('load', function () {
+  observer.observe(document.querySelector('head > title'), {
+    attributes: true,
+    childList: true,
+    characterData: true,
+    subtree: true,
+    attributeOldValue: true,
+    characterDataOldValue: true,
+  });
+  console.log('SemaphoreCI Notifier active!');
 });
-
-console.log('SemaphoreCI Notifier active!');
 
 addEventListener('beforeunload', (event) => {
   observer.disconnect();
