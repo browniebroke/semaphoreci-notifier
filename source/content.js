@@ -3,7 +3,7 @@ const PASSED_STRING = '[passed]';
 const FAILED_STRING = '[failed]';
 
 function handleTitleChanged(titleText) {
-  console.log(titleText);
+  console.log('Title changed to "%s"', titleText);
   if (titleText.includes(PASSED_STRING)) {
     console.log('Build OK!');
     browser.runtime.sendMessage({
