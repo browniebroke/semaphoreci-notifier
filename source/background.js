@@ -1,3 +1,5 @@
+import './sentry';
+
 browser.runtime.onMessage.addListener((message, sender, sendResponse) => {
   if (message.type === 'semaphoreci-notifier') {
     const creating = browser.notifications.create({

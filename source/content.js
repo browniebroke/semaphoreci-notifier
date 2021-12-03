@@ -1,3 +1,5 @@
+import './sentry';
+
 // Constants
 const PASSED_STRING = '[passed]';
 const FAILED_STRING = '[failed]';
