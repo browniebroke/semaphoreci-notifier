@@ -13,6 +13,8 @@
     "watch": "webpack --mode=development --watch"
   },
   "dependencies": {
+    "@sentry/browser": "^6.15.0",
+    "@sentry/tracing": "^6.15.0",
     "webext-options-sync": "3.0.0",
     "webextension-polyfill": "0.8.0"
   },
@@ -39,17 +41,23 @@
     "trailingComma": "es5"
   },
   "eslintConfig": {
-    "extends": ["prettier"],
-    "plugins": ["prettier"],
+    "extends": [
+      "prettier"
+    ],
+    "plugins": [
+      "prettier"
+    ],
     "parserOptions": {
       "ecmaVersion": 9,
       "sourceType": "module"
     },
-
     "env": {
       "es6": true
     },
-    "ignorePatterns": ["node_modules/", "dist/"],
+    "ignorePatterns": [
+      "node_modules/",
+      "dist/"
+    ],
     "rules": {
       "prettier/prettier": [
         "error",
