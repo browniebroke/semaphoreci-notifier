@@ -20,7 +20,7 @@ jobs:
       # Read node version from `.nvmrc` file
       - id: nvmrc
         uses: browniebroke/read-nvmrc-action@v1
-      - uses: actions/setup-node@v2
+      - uses: actions/setup-node@v3
         with:
           node-version: '${{ steps.nvmrc.outputs.node_version }}'
       - run: npm install
