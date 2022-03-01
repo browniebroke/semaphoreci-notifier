@@ -14,7 +14,7 @@ jobs:
       created: ${{ steps.daily-version.outputs.created }}
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         with:
           fetch-depth: 20
       # Read node version from `.nvmrc` file
