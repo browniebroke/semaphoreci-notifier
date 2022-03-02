@@ -48,7 +48,7 @@ jobs:
     if: github.event_name == 'workflow_dispatch' || needs.Build.outputs.created
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/download-artifact@v2
+      - uses: actions/download-artifact@v3
       - run: cd artifact && npx chrome-webstore-upload-cli@1 upload --auto-publish
         env:
           EXTENSION_ID: ${{ secrets.EXTENSION_ID }}
@@ -61,7 +61,7 @@ jobs:
     if: github.event_name == 'workflow_dispatch' || needs.Build.outputs.created
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/download-artifact@v2
+      - uses: actions/download-artifact@v3
       - run: cd artifact && npx web-ext-submit@4
         env:
           WEB_EXT_API_KEY: ${{ secrets.WEB_EXT_API_KEY }}
