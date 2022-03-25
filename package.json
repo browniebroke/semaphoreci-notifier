@@ -16,7 +16,7 @@
     "@sentry/browser": "6.19.2",
     "@sentry/tracing": "6.19.2",
     "webext-options-sync": "3.0.1",
-    "webextension-polyfill": "0.8.0"
+    "webextension-polyfill": "0.9.0"
   },
   "devDependencies": {
     "chrome-webstore-upload-cli": "2.0.1",
