@@ -19,7 +19,7 @@
     "webextension-polyfill": "0.9.0"
   },
   "devDependencies": {
-    "chrome-webstore-upload-cli": "2.0.1",
+    "chrome-webstore-upload-cli": "2.1.0",
     "copy-webpack-plugin": "10.2.4",
     "daily-version": "2.0.0",
     "dot-json": "1.2.2",
