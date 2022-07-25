@@ -1,6 +1,6 @@
 # SemaphoreCI Notifier
 
-Browser extension to send browser notifications when the build finishes on Semaphore classic.
+Browser extension to send browser notifications when the build finishes on Semaphore CI. This extension supports both Semaphore classic and 2.0.
 
 - [Chrome webstore](https://chrome.google.com/webstore/detail/semaphore-ci-notifier/fidjidielhnphocjcnbccipbjikemnpl)
 - [Firefox Addon](https://addons.mozilla.org/firefox/addon/semaphore-ci-notifier/)
