@@ -1,5 +1,8 @@
 import './sentry';
 
+/*
+ * Semaphore classic: watch for mutation of the title element
+ */
 // Constants
 const PASSED_STRING = '[passed]';
 const FAILED_STRING = '[failed]';
@@ -33,7 +36,7 @@ function handleTitleChanged(titleText) {
   console.log('Build Not Finished...');
 }
 
-const observer = new MutationObserver((mutations) => {
+const titleObserver = new MutationObserver((mutations) => {
   console.log(mutations);
   mutations.forEach((mutation) => {
     // The <title> is not updated in place, it's removed and then added
@@ -48,8 +51,72 @@ const observer = new MutationObserver((mutations) => {
   });
 });
 
+/*
+ * Semaphore 2.0: watch for mutation of the favicon
+ */
+// Constants
+const RUNNING_ICON = 'images/favicon-running.svg';
+const PASSED_ICON = 'images/favicon-passed.svg';
+const STOPPED_ICON = 'images/favicon-stopped.svg';
+const FAILED_ICON = 'images/favicon-failed.svg';
+
+const faviconObserver = new MutationObserver((mutations) => {
+  console.log(mutations);
+  mutations.forEach((mutation) => {
+    if (
+      mutation.type === 'attributes' &&
+      mutation.attributeName === 'href' &&
+      // Used to be running
+      mutation.oldValue.includes(RUNNING_ICON) &&
+      // is no longer running
+      !mutation.target.href.includes(RUNNING_ICON)
+    ) {
+      const titleText = document.querySelector('head > title').innerText;
+      handleFaviconChanged(mutation.target.href, titleText);
+    }
+  });
+});
+
+function handleFaviconChanged(iconUrl, titleText) {
+  console.log('Icon changed to "%s"', iconUrl);
+  const jobType = titleText.startsWith('Deploy') ? 'Deploy' : 'Build';
+  if (iconUrl.includes(PASSED_ICON)) {
+    console.log('Build OK!');
+    browser.runtime.sendMessage({
+      type: 'semaphoreci-notifier',
+      options: {
+        iconUrl: browser.extension.getURL('passed-2.0.png'),
+        title: `${jobType} OK!`,
+        message: titleText,
+      },
+    });
+    return;
+  }
+  if (iconUrl.includes(STOPPED_ICON) || iconUrl.includes(FAILED_ICON)) {
+    console.log('Build Failed!');
+    browser.runtime.sendMessage({
+      type: 'semaphoreci-notifier',
+      options: {
+        iconUrl: browser.extension.getURL('failed-2.0.png'),
+        title: `${jobType} Failed!`,
+        message: titleText,
+      },
+    });
+    return;
+  }
+  console.log('Build Not Finished...');
+}
+
 addEventListener('load', function () {
-  observer.observe(document.querySelector('head > title'), {
+  titleObserver.observe(document.querySelector('head > title'), {
+    attributes: true,
+    childList: true,
+    characterData: true,
+    subtree: true,
+    attributeOldValue: true,
+    characterDataOldValue: true,
+  });
+  faviconObserver.observe(document.querySelector('head > link[rel="icon"]'), {
     attributes: true,
     childList: true,
     characterData: true,
@@ -61,6 +128,7 @@ addEventListener('load', function () {
 });
 
 addEventListener('beforeunload', (event) => {
-  observer.disconnect();
+  titleObserver.disconnect();
+  faviconObserver.disconnect();
   console.log('Deactivated SemaphoreCI Notifier');
 });
