@@ -1,4 +1,4 @@
-import './sentry';
+import './sentry.js';
 
 browser.runtime.onMessage.addListener((message, sender, sendResponse) => {
   if (message.type === 'semaphoreci-notifier') {

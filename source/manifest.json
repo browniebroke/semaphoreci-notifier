@@ -3,9 +3,9 @@
   "version": "0.0.0",
   "description": "A browser extension to notify of build outcome in Semaphore CI (classic and 2.0)",
   "homepage_url": "https://github.com/browniebroke/semaphoreci-notifier",
-  "manifest_version": 2,
-  "minimum_chrome_version": "74",
-  "applications": {
+  "manifest_version": 3,
+  "minimum_chrome_version": "100",
+  "browser_specific_settings": {
     "gecko": {
       "id": "{b41f8e76-5c6d-444a-910d-a5a69e095e5d}",
       "strict_min_version": "48.0"
@@ -15,20 +15,25 @@
     "128": "icon.png"
   },
   "permissions": ["notifications"],
-  "background": {
-    "persistent": false,
-    "scripts": ["browser-polyfill.min.js", "background.js"]
-  },
+  "host_permissions": [
+    "https://semaphoreci.com/*",
+    "https://*.semaphoreci.com/*"
+  ],
   "content_scripts": [
     {
       "matches": ["https://semaphoreci.com/*", "https://*.semaphoreci.com/*"],
+      "js": ["content.js"],
+      "run_at": "document_end",
       "include_globs": [
         "*/builds/*",
         "*/deploys/*",
         "*/workflows/*",
         "*/jobs/*"
-      ],
-      "js": ["browser-polyfill.min.js", "content.js"]
+      ]
     }
-  ]
+  ],
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  }
 }

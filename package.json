@@ -1,39 +1,50 @@
 {
   "private": true,
   "scripts": {
-    "build": "webpack --mode=production",
+    "build": "parcel build source/manifest.json --no-content-hash --no-source-maps --dist-dir distribution --no-cache --detailed-report 0",
     "format": "prettier --write .",
     "lint:eslint": "eslint --ext .js .",
     "lint:prettier": "prettier --check .",
-    "release": "VER=$(daily-version) run-s build version release:*",
-    "release:amo": "web-ext-submit --source-dir distribution",
-    "release:cws": "webstore upload --source=distribution --auto-publish",
-    "test": "run-s lint:* build",
-    "version": "dot-json distribution/manifest.json version $VER",
-    "watch": "webpack --mode=development --watch"
+    "test": "run-p lint:* build",
+    "watch": "parcel watch source/manifest.json --dist-dir distribution --no-cache --no-hmr"
+  },
+  "browserslist": [
+    "last 1 Chrome version",
+    "last 1 Firefox version"
+  ],
+  "xo": {
+    "envs": [
+      "browser",
+      "webextensions"
+    ]
   },
   "dependencies": {
     "@sentry/browser": "7.27.0",
     "@sentry/tracing": "7.27.0",
-    "webext-options-sync": "4.0.0",
-    "webextension-polyfill": "0.10.0"
+    "webext-base-css": "1.4.1",
+    "webext-options-sync": "3.1.0"
   },
   "devDependencies": {
-    "chrome-webstore-upload-cli": "2.1.0",
-    "copy-webpack-plugin": "11.0.0",
-    "daily-version": "2.0.0",
-    "dot-json": "1.2.2",
+    "@parcel/config-webextension": "2.6.2",
     "eslint": "8.30.0",
     "eslint-config-prettier": "8.5.0",
     "eslint-plugin-prettier": "4.2.1",
     "npm-run-all": "4.1.5",
+    "parcel": "2.6.2",
     "prettier": "2.8.1",
-    "size-plugin": "2.0.2",
-    "terser-webpack-plugin": "5.3.6",
-    "web-ext": "7.4.0",
-    "web-ext-submit": "7.4.0",
-    "webpack": "5.75.0",
-    "webpack-cli": "5.0.1"
+    "process": "^0.11.10"
+  },
+  "webExt": {
+    "sourceDir": "distribution",
+    "run": {
+      "startUrl": [
+        "https://github.com/fregante/browser-extension-template"
+      ]
+    }
+  },
+  "@parcel/bundler-default-bug": "https://github.com/parcel-bundler/parcel/issues/8071",
+  "@parcel/bundler-default": {
+    "minBundles": 10000000
   },
   "prettier": {
     "semi": true,

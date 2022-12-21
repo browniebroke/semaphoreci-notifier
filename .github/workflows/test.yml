@@ -9,13 +9,18 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  security:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: npx lockfile-lint --path package-lock.json --validate-https
   test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
-          cache: 'npm'
-          node-version-file: '.nvmrc'
-      - run: npm i
-      - run: npm run test
+          cache: npm
+          node-version-file: .nvmrc
+      - run: npm install
+      - run: npm test
