@@ -69,9 +69,23 @@ const RUNNING_ICON = 'images/favicon-running.svg';
 const PASSED_ICON = 'images/favicon-passed.svg';
 const STOPPED_ICON = 'images/favicon-stopped.svg';
 const FAILED_ICON = 'images/favicon-failed.svg';
+let testNotificationSent = 0;
 
 const faviconObserver = new MutationObserver((mutations) => {
   console.log(mutations);
+
+  if (testNotificationSent === 0) {
+    testNotificationSent++;
+    console.log('Sending Test notification');
+    browser.runtime.sendMessage({
+      type: 'semaphoreci-notifier',
+      options: {
+        iconUrl: passedClassic,
+        title: 'Build OK!',
+        message: 'This is a test',
+      },
+    });
+  }
   for (const mutation of mutations) {
     if (
       mutation.type === 'attributes' &&
