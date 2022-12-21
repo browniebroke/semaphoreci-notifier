@@ -3,4 +3,5 @@ dist
 public
 .cache
 .vscode
+package.json
 distribution

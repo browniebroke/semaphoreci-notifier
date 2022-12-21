@@ -1,4 +1,4 @@
-import './sentry.js';
+import './sentry';
 
 /*
  * Semaphore classic: watch for mutation of the title element
@@ -21,7 +21,6 @@ function handleTitleChanged(titleText) {
     });
     return;
   }
-
   if (titleText.includes(FAILED_STRING)) {
     console.log('Build Failed!');
     browser.runtime.sendMessage({
@@ -34,13 +33,12 @@ function handleTitleChanged(titleText) {
     });
     return;
   }
-
   console.log('Build Not Finished...');
 }
 
 const titleObserver = new MutationObserver((mutations) => {
   console.log(mutations);
-  for (const mutation of mutations) {
+  mutations.forEach((mutation) => {
     // The <title> is not updated in place, it's removed and then added
     // When the node is added back to the dom, check its content
     if (
@@ -50,7 +48,7 @@ const titleObserver = new MutationObserver((mutations) => {
     ) {
       handleTitleChanged(mutation.target.innerText);
     }
-  }
+  });
 });
 
 /*
@@ -64,19 +62,19 @@ const FAILED_ICON = 'images/favicon-failed.svg';
 
 const faviconObserver = new MutationObserver((mutations) => {
   console.log(mutations);
-  for (const mutation of mutations) {
+  mutations.forEach((mutation) => {
     if (
       mutation.type === 'attributes' &&
       mutation.attributeName === 'href' &&
       // Used to be running
       mutation.oldValue.includes(RUNNING_ICON) &&
-      // Is no longer running
+      // is no longer running
       !mutation.target.href.includes(RUNNING_ICON)
     ) {
       const titleText = document.querySelector('head > title').innerText;
       handleFaviconChanged(mutation.target.href, titleText);
     }
-  }
+  });
 });
 
 function handleFaviconChanged(iconUrl, titleText) {
@@ -94,7 +92,6 @@ function handleFaviconChanged(iconUrl, titleText) {
     });
     return;
   }
-
   if (iconUrl.includes(STOPPED_ICON) || iconUrl.includes(FAILED_ICON)) {
     console.log('Build Failed!');
     browser.runtime.sendMessage({
@@ -107,11 +104,10 @@ function handleFaviconChanged(iconUrl, titleText) {
     });
     return;
   }
-
   console.log('Build Not Finished...');
 }
 
-addEventListener('load', () => {
+addEventListener('load', function () {
   titleObserver.observe(document.querySelector('head > title'), {
     attributes: true,
     childList: true,
