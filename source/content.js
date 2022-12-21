@@ -1,4 +1,12 @@
 import './sentry.js';
+import failedClassic from 'url:./failed.png';
+import failed20 from 'url:./failed-2.0.png';
+import passedClassic from 'url:./passed.png';
+import passed20 from 'url:./passed-2.0.png';
+
+if (typeof browser === 'undefined') {
+  var browser = chrome;
+}
 
 /*
  * Semaphore classic: watch for mutation of the title element
@@ -14,7 +22,7 @@ function handleTitleChanged(titleText) {
     browser.runtime.sendMessage({
       type: 'semaphoreci-notifier',
       options: {
-        iconUrl: browser.extension.getURL('passed.png'),
+        iconUrl: passedClassic,
         title: 'Build OK!',
         message: titleText,
       },
@@ -27,7 +35,7 @@ function handleTitleChanged(titleText) {
     browser.runtime.sendMessage({
       type: 'semaphoreci-notifier',
       options: {
-        iconUrl: browser.extension.getURL('failed.png'),
+        iconUrl: failedClassic,
         title: 'Build Failed!',
         message: titleText,
       },
@@ -87,7 +95,7 @@ function handleFaviconChanged(iconUrl, titleText) {
     browser.runtime.sendMessage({
       type: 'semaphoreci-notifier',
       options: {
-        iconUrl: browser.extension.getURL('passed-2.0.png'),
+        iconUrl: passed20,
         title: `${jobType} OK!`,
         message: titleText,
       },
@@ -100,7 +108,7 @@ function handleFaviconChanged(iconUrl, titleText) {
     browser.runtime.sendMessage({
       type: 'semaphoreci-notifier',
       options: {
-        iconUrl: browser.extension.getURL('failed-2.0.png'),
+        iconUrl: failed20,
         title: `${jobType} Failed!`,
         message: titleText,
       },
