@@ -15,7 +15,7 @@
   "dependencies": {
     "@sentry/browser": "7.48.0",
     "@sentry/tracing": "7.48.0",
-    "webext-options-sync": "4.0.1",
+    "webext-options-sync": "4.1.1",
     "webextension-polyfill": "0.10.0"
   },
   "devDependencies": {
