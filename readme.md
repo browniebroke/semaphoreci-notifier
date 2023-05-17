@@ -1,5 +1,8 @@
 # SemaphoreCI Notifier
 
+> **Warning**
+> This extension is deprecated. I no longer use SemaphoreCI myself, so I have no personal interest in maintaining this.
+
 Browser extension to send browser notifications when the build finishes on Semaphore CI. This extension supports both Semaphore classic and 2.0.
 
 - [Chrome webstore](https://chrome.google.com/webstore/detail/semaphore-ci-notifier/fidjidielhnphocjcnbccipbjikemnpl)

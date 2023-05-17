@@ -8,8 +8,9 @@ env:
 name: Release
 on:
   workflow_dispatch:
-  schedule:
-    - cron: '31 13 * * 3'
+  # schedule:
+  #   - cron: '31 13 * * 3'
+
 jobs:
   Version:
     outputs:
