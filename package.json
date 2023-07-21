@@ -13,8 +13,8 @@
     "watch": "webpack --mode=development --watch"
   },
   "dependencies": {
-    "@sentry/browser": "7.59.3",
-    "@sentry/tracing": "7.59.3",
+    "@sentry/browser": "7.60.0",
+    "@sentry/tracing": "7.60.0",
     "webext-options-sync": "4.2.0",
     "webextension-polyfill": "0.10.0"
   },
