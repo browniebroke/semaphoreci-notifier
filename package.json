@@ -26,7 +26,7 @@
     "eslint": "8.56.0",
     "eslint-config-prettier": "9.1.0",
     "eslint-plugin-prettier": "4.2.1",
-    "npm-run-all2": "5.0.0",
+    "npm-run-all2": "5.0.2",
     "prettier": "2.8.8",
     "size-plugin": "2.0.2",
     "terser-webpack-plugin": "5.3.10",
