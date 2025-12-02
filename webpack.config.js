@@ -38,7 +38,7 @@ module.exports = {
           compress: false,
           output: {
             beautify: true,
-            indent_level: 2, // eslint-disable-line camelcase
+            indent_level: 2,
           },
         },
       }),
