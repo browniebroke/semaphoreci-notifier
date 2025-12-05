@@ -31,7 +31,7 @@
     "npm-run-all2": "8.0.4",
     "prettier": "3.7.4",
     "size-plugin": "2.0.2",
-    "terser-webpack-plugin": "5.3.14",
+    "terser-webpack-plugin": "5.3.15",
     "web-ext": "9.2.0",
     "web-ext-submit": "7.8.0",
     "webpack": "5.103.0",
